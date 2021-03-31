@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageItemComponent } from './message-item/message-item.component';
+import { MessageItemListComponent } from './message-item-list/message-item-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessageItemComponent
+    MessageItemComponent,
+    MessageItemListComponent
   ],
   imports: [
     BrowserModule,

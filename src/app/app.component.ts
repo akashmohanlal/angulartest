@@ -7,15 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  firstMessageItem = {
-    id:1,
-    title: "Hello world!",
-    message: "This is a long ting message",
-    isRead: true,
-  }
-
-  onMessageItemDelete(messageItem){
-
-  }
-
+  
+ 
 }
