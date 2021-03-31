@@ -6,8 +6,8 @@
     </div>
     <!-- <i class="bi bi-envelope-open"></i> -->
     <div class="card-body">
-        <h5 [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-title">{{ messageItem.title }}</h5>
-        <p [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-text">{{ messageItem.message }}</p>
+        <h5 [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-title">{{ messageItem.title | truncate: [15, '...'] }}</h5>
+        <p [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-text">{{ messageItem.message | truncate: [30, '...'] }}</p>
         <button (click)="onDelete()" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
     </div>
 </div>

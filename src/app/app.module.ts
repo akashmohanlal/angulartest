@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MessageItemComponent } from './message-item/message-item.component';
 import { MessageItemListComponent } from './message-item-list/message-item-list.component';
 import { StarredDirective } from './starred.directive';
+import { TextTruncatePipe } from './text-truncate.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageItemComponent,
     MessageItemListComponent,
-    StarredDirective
+    StarredDirective,
+    TextTruncatePipe
   ],
   imports: [
     BrowserModule,

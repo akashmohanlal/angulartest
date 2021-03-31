@@ -1,11 +1,16 @@
 .bold-text {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .green {
-    color: green;
+  color: green;
 }
 
 .starred.bi-star-fill {
-    color: yellow;
+  color: rgb(255, 30, 0);
+  border: black;
+}
+
+.is-starred-hovering {
+  color:yellow;
 }

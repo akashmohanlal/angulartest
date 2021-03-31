@@ -10,7 +10,7 @@ export class MessageItemListComponent implements OnInit {
     {
       id: 1,
       title: "Hello world!",
-      message: "This is a long ting message",
+      message: "This is a long ting message,we will try to truncate the text so it does not expand beyond whats required",
       isRead: true,
       isStarred: false
     }, 
