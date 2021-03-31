@@ -14,4 +14,8 @@ export class AppComponent {
     isRead: false,
   }
 
+  onMessageItemDelete(messageItem){
+    
+  }
+
 }

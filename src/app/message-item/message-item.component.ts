@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'at-message-item',
@@ -7,9 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageItemComponent implements OnInit {
   @Input() messageItem;
+  @Output() delete = new EventEmitter();
   
   onDelete(){
     console.log("delete");
+    this.delete.emit(this.messageItem);
   }
 
   constructor() { }
