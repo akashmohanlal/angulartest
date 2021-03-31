@@ -1,7 +1,11 @@
-.bold-text{
+.bold-text {
     font-weight: bold;
 }
 
-.green{
+.green {
     color: green;
+}
+
+.is-starred {
+    color: yellow;
 }

@@ -1,10 +1,10 @@
-import { Directive } from '@angular/core';
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appStarred]'
+  selector: '[atStarred]'
 })
 export class StarredDirective {
-
+  @HostBinding('class.is-starred') isStarred = true;
   constructor() { }
 
 }
