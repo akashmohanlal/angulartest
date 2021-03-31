@@ -6,6 +6,6 @@
     color: green;
 }
 
-.is-starred {
+.starred.bi-star-fill {
     color: yellow;
 }
