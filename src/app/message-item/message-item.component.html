@@ -1,5 +1,6 @@
 <div class="card" style="width: 18rem;">
-  <i class="bi bi-envelope"></i>
+  <i class="bi bi-envelope"></i> 
+  <i class="bi bi-check" *ngIf="messageItem.isRead"></i>
   <!-- <i class="bi bi-envelope-open"></i> -->
   <div class="card-body">
     <h5 class="card-title">{{ messageItem.title }}</h5>

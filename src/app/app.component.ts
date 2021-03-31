@@ -11,11 +11,11 @@ export class AppComponent {
     id:1,
     title: "Hello world!",
     message: "This is a long ting message",
-    isRead: false,
+    isRead: true,
   }
 
   onMessageItemDelete(messageItem){
-    
+
   }
 
 }
