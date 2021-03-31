@@ -1,10 +1,12 @@
 <div class="card" style="width: 18rem;">
-  <i class="bi bi-envelope"></i> 
-  <i class="bi bi-check" *ngIf="messageItem.isRead"></i>
+  <div>
+    <i class="bi bi-envelope"></i>
+    <i class="bi bi-check green" *ngIf="messageItem.isRead"></i>
+  </div>
   <!-- <i class="bi bi-envelope-open"></i> -->
   <div class="card-body">
-    <h5 class="card-title">{{ messageItem.title }}</h5>
-    <p class="card-text">{{ messageItem.message }}</p>
-  <button (click)="onDelete()" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+    <h5 [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-title">{{ messageItem.title }}</h5>
+    <p [ngClass]="{'bold-text': messageItem.isRead === false}" class="card-text">{{ messageItem.message }}</p>
+    <button (click)="onDelete()" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
   </div>
 </div>

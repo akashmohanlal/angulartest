@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageItemComponent } from './message-item/message-item.component';
 import { MessageItemListComponent } from './message-item-list/message-item-list.component';
+import { StarredDirective } from './starred.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageItemComponent,
-    MessageItemListComponent
+    MessageItemListComponent,
+    StarredDirective
   ],
   imports: [
     BrowserModule,
