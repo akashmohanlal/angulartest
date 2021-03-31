@@ -1,5 +1,6 @@
 <section>
-    <at-message-item *ngFor="let messageItem of messageItems"
-    (delete)="onMessageItemDelete($event)"
+  <p> count : {{ messageItems | messageCounter }} </p>
+
+  <at-message-item *ngFor="let messageItem of messageItems" (delete)="onMessageItemDelete($event)"
     [messageItem]="messageItem"></at-message-item>
-</section> 
+</section>

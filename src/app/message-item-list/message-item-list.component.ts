@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-item-list.component.css']
 })
 export class MessageItemListComponent implements OnInit {
+  unreadMessageCount = 0;
   messageItems = [
     {
       id: 1,
@@ -25,7 +26,7 @@ export class MessageItemListComponent implements OnInit {
       id: 3,
       title: "this just keeps going",
       message: "yet another message",
-      isRead: false,
+      isRead: true,
       isStarred: false
     },
     {
@@ -52,6 +53,10 @@ export class MessageItemListComponent implements OnInit {
   onMessageItemDelete(messageItem){
 
   }
+
+  // countUnreadMessages(){
+  //   this.countUnreadMessages = this.messageItems.filter(message => message.isRead === false).length;
+  // }
 
 
 }
