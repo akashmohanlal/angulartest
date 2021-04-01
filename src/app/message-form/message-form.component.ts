@@ -34,8 +34,8 @@ export class MessageFormComponent implements OnInit {
   }
 
   messageValidator(control: FormControl){
-    if(control.value.toString().includes('test')){
-      return {title :true};
+    if(control.value?.toString().includes('test')){
+      return {title : 'The title field must not contain the test name'};
     }  
     
     return null;
