@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageItemComponent } from './message-item/message-item.component';
@@ -8,6 +8,7 @@ import { MessageItemListComponent } from './message-item-list/message-item-list.
 import { StarredDirective } from './starred.directive';
 import { TextTruncatePipe } from './text-truncate.pipe';
 import { MessageCounterPipe } from './message-counter.pipe';
+import { MessageFormComponent } from './message-form/message-form.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,13 @@ import { MessageCounterPipe } from './message-counter.pipe';
     MessageItemListComponent,
     StarredDirective,
     TextTruncatePipe,
-    MessageCounterPipe
+    MessageCounterPipe,
+    MessageFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
