@@ -6,6 +6,7 @@
         <li class="form-group">
             <label for="title">Title</label>
             <input class="form-control" type="text" name="title" formControlName="title">
+            <div class="text-danger" *ngIf="form.get('title')?.hasError('title')">Title has the test name</div>
         </li>
         <li class="form-group">
             <label for="message">Message</label>

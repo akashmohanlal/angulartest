@@ -16,13 +16,14 @@ export class MessageFormComponent implements OnInit {
 
     this.form = new FormGroup({
       title: new FormControl('', Validators.compose([
-        Validators.required       
+        Validators.required ,
+        this.messageValidator      
       ])),
       message: new FormControl(''),
       isRead: new FormControl(false),
       isStarred: new FormControl(false) 
     });
-  }
+  }  
 
   onSubmit(form) {
     console.log(form);
@@ -30,6 +31,15 @@ export class MessageFormComponent implements OnInit {
 
   onClear(form) {
     form.reset();
+  }
+
+  messageValidator(control: FormControl){
+    if(control.value.toString().includes('test')){
+      return {title :true};
+    }  
+    
+    return null;
+    
   }
 
 }
