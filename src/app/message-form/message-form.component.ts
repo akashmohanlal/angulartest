@@ -10,6 +10,11 @@ export class MessageFormComponent implements OnInit {
   onSubmit(messageform){
     console.log(messageform);
   }
+
+  onClear(messageform){
+    messageform.resetForm();
+  }
+
   constructor() { }
 
   ngOnInit(): void {
