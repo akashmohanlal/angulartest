@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'at-message-form',
@@ -6,18 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-form.component.css']
 })
 export class MessageFormComponent implements OnInit {
+  form : FormGroup;
 
-  onSubmit(messageForm){
+   constructor() {
+    }
+
+  ngOnInit(): void {
+
+    this.form = new FormGroup({
+      title: new FormControl(''),
+      message: new FormControl(''),
+      isRead: new FormControl(false),
+      isStarred: new FormControl(false) 
+    });
+  }
+
+  onSubmit(messageForm) {
     console.log(messageForm);
   }
 
-  onClear(messageForm){
+  onClear(messageForm) {
     messageForm.resetForm();
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
 }
