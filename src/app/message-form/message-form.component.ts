@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageFormComponent implements OnInit {
 
-  onSubmit(messageform){
-    console.log(messageform);
+  onSubmit(messageForm){
+    console.log(messageForm);
   }
 
-  onClear(messageform){
-    messageform.resetForm();
+  onClear(messageForm){
+    messageForm.resetForm();
   }
 
   constructor() { }
