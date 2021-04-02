@@ -26,7 +26,7 @@ import { MessageFormComponent } from './message-form/message-form.component';
     FormsModule,
     ReactiveFormsModule 
   ],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

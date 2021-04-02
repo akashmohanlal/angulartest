@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'at-message-form',
@@ -9,24 +10,25 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class MessageFormComponent implements OnInit {
   form : FormGroup;
 
-   constructor() {
+   constructor(private formBuilder : FormBuilder, private messageService : MessageService) {
+
     }
 
   ngOnInit(): void {
 
-    this.form = new FormGroup({
-      title: new FormControl('', Validators.compose([
+    this.form = this.formBuilder.group({
+      title: this.formBuilder.control('', Validators.compose([
         Validators.required ,
         this.messageValidator      
       ])),
-      message: new FormControl(''),
-      isRead: new FormControl(false),
-      isStarred: new FormControl(false) 
+      message: this.formBuilder.control(''),
+      isRead: this.formBuilder.control(false),
+      isStarred: this.formBuilder.control(false) 
     });
   }  
 
   onSubmit(form) {
-    console.log(form);
+    this.messageService.add(form);
   }
 
   onClear(form) {
