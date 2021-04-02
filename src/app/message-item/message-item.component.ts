@@ -19,6 +19,10 @@ export class MessageItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onStarred(messageItem){
+    console.log("starred event !" + messageItem);
+  }
+
 }
 
 // interface Message {

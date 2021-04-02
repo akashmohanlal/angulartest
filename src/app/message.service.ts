@@ -61,4 +61,18 @@ export class MessageService {
       this.messageItems.splice(index,1);
     }
   }
+
+  deleteById(messageId){
+   let first = this.messageItems.filter(message => message.id = messageId)[0];
+
+   if(first != null){
+     this.delete(first);
+   }
+  }
+
+  update(messageItem){
+   this.deleteById(messageItem);
+   this.add(messageItem);
+  }  
+
 }

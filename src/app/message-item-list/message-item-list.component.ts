@@ -19,6 +19,8 @@ export class MessageItemListComponent implements OnInit {
     this.messageService.delete(messageItem);
   }
 
+  
+
   // countUnreadMessages(){
   //   this.countUnreadMessages = this.messageItems.filter(message => message.isRead === false).length;
   // }
