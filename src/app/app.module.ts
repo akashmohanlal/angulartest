@@ -35,3 +35,5 @@ import { lookupListToken, lookupList} from './provider'
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+//https://github.com/coursefiles/angular-essential-training/tree/completed
