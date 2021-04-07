@@ -1,5 +1,8 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +17,13 @@ export class MessageService {
       isRead: true,
       isStarred: false,
       priority: 'low'
-    }, 
+    },
     {
       id: 2,
       title: "Another message",
       message: "some other text",
       isRead: false,
-      isStarred : true,
+      isStarred: true,
       priority: 'low'
     },
     {
@@ -50,34 +53,61 @@ export class MessageService {
 
   ]
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  get() {
-    return this.messageItems;
+  get(priority) {
+    const getOptions ={
+      params : {priority}
+    }
+    return this.http.get<MessageItemResponse>("messageitems", getOptions)
+      .pipe(
+        map((response: MessageItemResponse) => {
+          return response.messageItems;
+        }),
+        catchError(this.handleError)
+      );
   }
 
-  add(messageItem){
+  private handleError(error: HttpErrorResponse) {
+    console.error(error.message);
+    return throwError('A data error occurred, please try again.');
+  }
+  
+  add(messageItem) {
     this.messageItems.push(messageItem);
   }
 
-  delete(messageItem){
+  delete(messageItem) {
     const index = this.messageItems.indexOf(messageItem);
-    if(index >= 0){
-      this.messageItems.splice(index,1);
+    if (index >= 0) {
+      this.messageItems.splice(index, 1);
     }
   }
 
-  deleteById(messageId){
-   let first = this.messageItems.filter(message => message.id = messageId)[0];
+  deleteById(messageId) {
+    let first = this.messageItems.filter(message => message.id = messageId)[0];
 
-   if(first != null){
-     this.delete(first);
-   }
+    if (first != null) {
+      this.delete(first);
+    }
   }
 
-  update(messageItem){
-   this.deleteById(messageItem);
-   this.add(messageItem);
-  }  
+  update(messageItem) {
+    this.deleteById(messageItem);
+    this.add(messageItem);
+  }
 
+}
+
+export interface MessageItem {
+  id: number;
+  title: string;
+  message: string;
+  isRead: boolean;
+  isStarred: boolean;
+  priority: string;
+}
+
+interface MessageItemResponse {
+  messageItems: MessageItem[];
 }

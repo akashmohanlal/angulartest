@@ -10,13 +10,13 @@ export class MockXhrBackend implements HttpBackend {
       isRead: true,
       isStarred: false,
       priority: 'low'
-    }, 
+    },
     {
       id: 2,
       title: "Another message",
       message: "some other text",
       isRead: false,
-      isStarred : true,
+      isStarred: true,
       priority: 'low'
     },
     {
@@ -46,10 +46,70 @@ export class MockXhrBackend implements HttpBackend {
 
   ]
 
-    handle(req: HttpRequest<any>): Observable<HttpEvent<any>> {
-       return new Observable((responseObserver : Observer<HttpResponse<any>>) =>{
-           
-       })
-    }
+  handle(request: HttpRequest<any>): Observable<HttpEvent<any>> {
+    return new Observable((responseObserver: Observer<HttpResponse<any>>) => {
+      let responseOptions;
+      switch (request.method) {
+        case 'GET':
+          if (request.urlWithParams.indexOf("messageitems?priority=") >= 0 || request.url === "messageitems") {
+            let priority;
+            if (request.urlWithParams.indexOf('?') >= 0) {
+              priority = request.urlWithParams.split('=')[1];
+              if (priority === 'undefined') { priority = ''; }
+            }
+            let messages;
+            if (priority) {
+              messages = this.messageItems.filter(i => i.priority === priority);
+            } else {
+              messages = this.messageItems;
+            }
+            responseOptions = {
+              body: { messageItems: JSON.parse(JSON.stringify(messages)) },
+              status: 200
+            };
+          } else {
+            let messages;
+            const idToFind = parseInt(request.url.split('/')[1], 10);
+            messages = this.messageItems.filter(i => i.id === idToFind);
+            responseOptions = {
+              body: JSON.parse(JSON.stringify(messages[0])),
+              status: 200
+            };
+          }
+          break;
+        case 'POST':
+          const mediaItem = request.body;
+          mediaItem.id = this._getNewId();
+          this.messageItems.push(mediaItem);
+          responseOptions = { status: 201 };
+          break;
+        case 'DELETE':
+          const id = parseInt(request.url.split('/')[1], 10);
+          //this._deleteMessageItem(id);
+          responseOptions = { status: 200 };
+      }
+      const responseObject = new HttpResponse(responseOptions);
+      responseObserver.next(responseObject);
+      responseObserver.complete();
+      return () => {
+      };
+    });
+  }
 
+
+  // _deleteMessageItem(id) {
+  //   const messageItem = this.messageItems.find(i => i.id === id);
+  //   const index = this.messageItems.indexOf(messageItem);
+  //   if (index >= 0) {
+  //     this.messageItems.splice(index, 1);
+  //   }
+  // }
+
+  _getNewId() {
+    if (this.messageItems.length > 0) {
+      return Math.max.apply(Math, this.messageItems.map(messageItem => messageItem.id)) + 1;
+    } else {
+      return 1;
+    }
+  }
 }

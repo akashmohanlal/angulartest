@@ -7,8 +7,7 @@ export class MessageCounterPipe implements PipeTransform {
 
   transform(messageItems) {
 
-    return  messageItems.filter(obj => obj.isRead === false).length;
-    
+    return messageItems.filter(obj => obj.isRead === false).length;
   }
 
 }
