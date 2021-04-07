@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MessageService } from '../message.service';
+import { lookupListToken } from '../provider';
 
 @Component({
   selector: 'at-message-form',
@@ -10,7 +11,9 @@ import { MessageService } from '../message.service';
 export class MessageFormComponent implements OnInit {
   form : FormGroup;
 
-   constructor(private formBuilder : FormBuilder, private messageService : MessageService) {
+   constructor(private formBuilder : FormBuilder,
+     private messageService : MessageService,
+     @Inject(lookupListToken) public lookupList) {
 
     }
 
