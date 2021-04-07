@@ -26,7 +26,8 @@ export class MessageFormComponent implements OnInit {
       ])),
       message: this.formBuilder.control(''),
       isRead: this.formBuilder.control(false),
-      isStarred: this.formBuilder.control(false) 
+      isStarred: this.formBuilder.control(false),
+      priority : this.formBuilder.control('')
     });
   }  
 

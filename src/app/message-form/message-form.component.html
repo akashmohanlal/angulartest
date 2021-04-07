@@ -17,9 +17,9 @@
             <input class="form-control" type="checkbox" name="isStarred" formControlName="isStarred" />
         </li>
         <li class="form-group">
-            <label for="Priority">Priority</label>
-            <select class="form-control" name="priority">
-                <option *ngFor="let priority of lookupList.priority" [value]="priority">{{ priority }}</option>
+            <label for="priority">Priority</label>
+            <select class="form-control" name="priority" formControlName="priority">
+                <option *ngFor="let priority of lookupList.priority"  [value]="priority">{{ priority }}</option>
             </select>
         </li>
     </ul>

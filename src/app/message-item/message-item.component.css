@@ -14,3 +14,15 @@
 .is-starred-hovering {
   color:yellow;
 }
+
+.low{
+  color: green;
+}
+
+.medium{
+  color:orange;
+}
+
+.high{
+  color: red;
+}

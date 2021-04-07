@@ -22,6 +22,7 @@ export class MessageItemComponent implements OnInit {
   onStarred(messageItem){
     console.log("starred event !" + messageItem);
   }
+ 
 
 }
 

@@ -3,6 +3,8 @@
         <i class="bi bi-envelope"></i>
         <i class="bi bi-check green" *ngIf="messageItem.isRead"></i>
         <i class="bi starred" [atStarred]="messageItem.isStarred"></i>
+        <i  [className]="'bi bi-flag-fill ' + messageItem.priority" ng-class=""></i>
+        <!-- <p><b>priority</b> {{messageItem.priority}}</p> -->
     </div>
     <!-- <i class="bi bi-envelope-open"></i> -->
     <div class="card-body">
