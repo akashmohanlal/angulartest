@@ -74,14 +74,12 @@ export class MessageService {
   }
   
   add(messageItem) {
-    this.messageItems.push(messageItem);
+    //this.messageItems.push(messageItem);
+    return this.http.post('messageitems',messageItem)
   }
 
   delete(messageItem) {
-    const index = this.messageItems.indexOf(messageItem);
-    if (index >= 0) {
-      this.messageItems.splice(index, 1);
-    }
+   return this.http.delete(`messageItem/${messageItem.id}`);
   }
 
   deleteById(messageId) {

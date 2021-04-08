@@ -1,5 +1,6 @@
 import { HttpBackend, HttpEvent, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Observable, Observer } from "rxjs";
+import { MessageItem } from "./message.service";
 
 export class MockXhrBackend implements HttpBackend {
   private messageItems = [
@@ -85,7 +86,7 @@ export class MockXhrBackend implements HttpBackend {
           break;
         case 'DELETE':
           const id = parseInt(request.url.split('/')[1], 10);
-          //this._deleteMessageItem(id);
+          this._deleteMessageItem(id);
           responseOptions = { status: 200 };
       }
       const responseObject = new HttpResponse(responseOptions);
@@ -97,13 +98,13 @@ export class MockXhrBackend implements HttpBackend {
   }
 
 
-  // _deleteMessageItem(id) {
-  //   const messageItem = this.messageItems.find(i => i.id === id);
-  //   const index = this.messageItems.indexOf(messageItem);
-  //   if (index >= 0) {
-  //     this.messageItems.splice(index, 1);
-  //   }
-  // }
+  _deleteMessageItem(id) {
+    const messageItem : MessageItem = this.messageItems.find(i => i.id === id);
+    const index = this.messageItems.indexOf(messageItem);
+    if (index >= 0) {
+      this.messageItems.splice(index, 1);
+    }
+  }
 
   _getNewId() {
     if (this.messageItems.length > 0) {

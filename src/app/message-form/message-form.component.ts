@@ -32,7 +32,8 @@ export class MessageFormComponent implements OnInit {
   }  
 
   onSubmit(form) {
-    this.messageService.add(form);
+    this.messageService.add(form)
+    .subscribe();
   }
 
   onClear(form) {

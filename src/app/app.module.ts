@@ -10,8 +10,8 @@ import { StarredDirective } from './starred.directive';
 import { TextTruncatePipe } from './text-truncate.pipe';
 import { MessageCounterPipe } from './message-counter.pipe';
 import { MessageFormComponent } from './message-form/message-form.component';
-import { lookupListToken, lookupList} from './provider';
-import {MockXhrBackend} from './mock-xhr-backend';
+import { lookupListToken, lookupList } from './provider';
+import { MockXhrBackend } from './mock-xhr-backend';
 
 @NgModule({
   declarations: [
@@ -30,10 +30,10 @@ import {MockXhrBackend} from './mock-xhr-backend';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ 
-    {provide:  lookupListToken, useValue: lookupList},
-    {provide : HttpXhrBackend, useValue : MockXhrBackend}
-   ],
+  providers: [
+    { provide: lookupListToken, useValue: lookupList },
+    { provide: HttpXhrBackend, useClass: MockXhrBackend }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
