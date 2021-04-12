@@ -1,9 +1,10 @@
 import { HttpBackend, HttpEvent, HttpRequest, HttpResponse } from "@angular/common/http";
+import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { Observable, Observer } from "rxjs";
 import { MessageItem } from "./message.service";
 
 export class MockXhrBackend implements HttpBackend {
-  private messageItems = [
+  private messageItems : MessageItem[] = [
     {
       id: 1,
       title: "Hello world!",
@@ -99,8 +100,13 @@ export class MockXhrBackend implements HttpBackend {
 
 
   _deleteMessageItem(id) {
-    const messageItem : MessageItem = this.messageItems.find(i => i.id === id);
-    const index = this.messageItems.indexOf(messageItem);
+    let message  = this.messageItems.find(i => i.id === id);
+
+    const index = -1;
+    if(message !== undefined){
+       this.messageItems.indexOf(message);
+    }
+    
     if (index >= 0) {
       this.messageItems.splice(index, 1);
     }

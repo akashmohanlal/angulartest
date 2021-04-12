@@ -9,50 +9,6 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class MessageService {
 
-  messageItems = [
-    {
-      id: 1,
-      title: "Hello world!",
-      message: "This is a long ting message,we will try to truncate the text so it does not expand beyond whats required",
-      isRead: true,
-      isStarred: false,
-      priority: 'low'
-    },
-    {
-      id: 2,
-      title: "Another message",
-      message: "some other text",
-      isRead: false,
-      isStarred: true,
-      priority: 'low'
-    },
-    {
-      id: 3,
-      title: "this just keeps going",
-      message: "yet another message",
-      isRead: true,
-      isStarred: false,
-      priority: 'high'
-    },
-    {
-      id: 4,
-      title: "nice day",
-      message: "Today we have good weather!",
-      isRead: false,
-      isStarred: false,
-      priority: 'low'
-    },
-    {
-      id: 5,
-      title: "Its snowing monday",
-      message: "Maybe",
-      isRead: true,
-      isStarred: false,
-      priority: 'medium'
-    }
-
-  ]
-
   constructor(private http: HttpClient) { }
 
   get(priority) {
@@ -75,25 +31,26 @@ export class MessageService {
   
   add(messageItem) {
     //this.messageItems.push(messageItem);
-    return this.http.post('messageitems',messageItem)
+    return this.http.post("messageitems",messageItem)
   }
 
   delete(messageItem) {
-   return this.http.delete(`messageItem/${messageItem.id}`);
+   return this.http.delete(`messageitems/${messageItem.id}`)
+   .pipe(catchError(this.handleError));
   }
 
-  deleteById(messageId) {
-    let first = this.messageItems.filter(message => message.id = messageId)[0];
+  // deleteById(messageId) {
+  //   let first = this.messageItems.filter(message => message.id = messageId)[0];
 
-    if (first != null) {
-      this.delete(first);
-    }
-  }
+  //   if (first != null) {
+  //     this.delete(first);
+  //   }
+  // }
 
-  update(messageItem) {
-    this.deleteById(messageItem);
-    this.add(messageItem);
-  }
+  // update(messageItem) {
+  //   this.deleteById(messageItem);
+  //   this.add(messageItem);
+  // }
 
 }
 

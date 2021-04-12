@@ -17,7 +17,10 @@ export class MessageItemListComponent implements OnInit {
   }
 
   onMessageItemDelete(messageItem) {
-    this.messageService.delete(messageItem);
+    this.messageService.delete(messageItem)
+    .subscribe(() => {
+      this.getMessageItems('')
+    });
   }
 
   getMessageItems(priority : string){
