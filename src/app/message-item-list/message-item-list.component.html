@@ -3,3 +3,9 @@
 
     <at-message-item *ngFor="let messageItem of messageItems" (delete)="onMessageItemDelete($event)" [messageItem]="messageItem"></at-message-item>
 </section>
+
+<footer>
+  <a routerLink="/add">
+    <i class="bi bi-plus-square-fill green"></i>
+  </a>
+</footer>

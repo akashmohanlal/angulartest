@@ -1,10 +1,23 @@
 <header>
-    <h1>This is my first app</h1>
-    <h2>The app is a message reader with a form</h2>
+  <h1>This is my first app</h1>
+  <h2>The app is a message reader with a form</h2>
 </header>
+
+<nav>
+  <a routerLink="/all">
+    <i class='bi bi-flag-fill'>All</i>
+  </a>
+  <a routerLink="/low">
+    <i class='bi bi-flag-fill low'>low</i>
+  </a>
+  <a routerLink="/medium">
+    <i class='bi bi-flag-fill medium'>medium</i>
+  </a>
+  <a routerLink="/high">
+    <i class='bi bi-flag-fill high'>high</i>
+  </a>
+  
+</nav>
 <section>
-    <at-message-item-list></at-message-item-list>
-</section>
-<section>
-    <at-message-form></at-message-form>
+  <router-outlet></router-outlet>
 </section>

@@ -57,7 +57,7 @@ export class MockXhrBackend implements HttpBackend {
             let priority;
             if (request.urlWithParams.indexOf('?') >= 0) {
               priority = request.urlWithParams.split('=')[1];
-              if (priority === 'undefined') { priority = ''; }
+              if (priority === 'undefined' ) { priority = ''; }
             }
             let messages;
             if (priority) {

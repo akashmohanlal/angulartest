@@ -1,2 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.low{
+  color: green;
+}
+
+.medium{
+  color:orange;
+}
+
+.high{
+  color: red;
+}
+
+a{
+  color: grey;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, MessageItem } from '../message.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'at-message-item-list',
@@ -7,23 +8,32 @@ import { MessageService, MessageItem } from '../message.service';
   styleUrls: ['./message-item-list.component.css']
 })
 export class MessageItemListComponent implements OnInit {
-  messageItems : MessageItem[];
+  messageItems: MessageItem[];
   priority = '';
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getMessageItems(this.priority);
+    this.activatedRoute.paramMap
+      .subscribe(paramMap => {
+        let priority = paramMap.get('priority');
+        if (priority === "all" || priority === null) {
+          priority = '';
+        }
+        this.getMessageItems(priority);
+      });
   }
+
 
   onMessageItemDelete(messageItem) {
     this.messageService.delete(messageItem)
-    .subscribe(() => {
-      this.getMessageItems('')
-    });
+      .subscribe(() => {
+        this.getMessageItems('')
+      });
   }
 
-  getMessageItems(priority : string){
+  getMessageItems(priority: string) {
     this.messageService.get(priority)
       .subscribe(messageItems => {
         this.messageItems = messageItems;
